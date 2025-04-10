@@ -36,3 +36,20 @@ nav a:hover {
   --color-accent: oklch(0.66 0.185 246.04)
 
 }
+
+input,
+textarea,
+button {
+  font: inherit;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-block: 1em;
+}
+
+/* form {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-block: 1em;
+} */
