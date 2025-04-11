@@ -81,4 +81,32 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
   margin: 0
 }
-/* is it okay if i add extra things like button? */
+
+section > header {
+  border-bottom: 2px solid #004080;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.75em;
+}
+
+li, p {
+  margin-left: 2em;
+}
+
+.edu-entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edu-left,
+.edu-right {
+  display: flex;
+  flex-direction: column;
+}
+.edu-left p em,
+.edu-right p em {
+  font-style: italic;
+}
+
+.degree {
+  margin-top: 0.2em;
+}
