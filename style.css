@@ -62,13 +62,22 @@ button {
   gap: 1em;
 }
 
-.projects article { /*what does .projects do */
-  display: grid; /* why do i need this line */
+.projects article { 
+  display: grid;
   grid-template-rows: subgrid;
   grid-row: span 3;
   gap: 1em;
 
 }
+
+
+.projects article p {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+
 h1 {
   font-size: 400%;
 }
@@ -116,4 +125,23 @@ li, p {
   text-align: center;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+.projects img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #d3d6db;
+  display: block;
+}
+
+
+.projects h2 a {
+  text-decoration: none;
+  color: inherit; /* keeps the same text color as the heading */
+  transition: all 0.2s ease;
+}
+
+.projects h2 a:hover {
+  text-decoration: underline;
 }
