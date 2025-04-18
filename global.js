@@ -94,3 +94,25 @@ select.addEventListener("input", (e) => {
   // keep for next page load
   localStorage.setItem("colorScheme", scheme);
 });
+
+document.querySelector('form')?.addEventListener('submit', e => {
+    e.preventDefault();
+  
+    const form    = e.target;
+    const action  = form.action;
+    const data    = new FormData(form);
+    const parts   = [];
+  
+    for (let [name, value] of data) {
+      parts.push(
+        `${encodeURIComponent(name)}=${encodeURIComponent(value)}`
+      );
+    }
+  
+    
+    const url = action + '?' + parts.join('&');
+  
+    location.href = url;
+    console.log('Final mailto URL:', url);
+  });
+  
