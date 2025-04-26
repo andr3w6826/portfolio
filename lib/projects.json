@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Power Outage Predictor",
+        "image": "/portfolio/images/po-analysis.jpeg",
+        "description": "A machine learning model that predicts large-scale power outages using historical U.S. data. \n                Built with Random Forest and includes data on weather, land use, and energy consumption."
+    },
+    {
+        "title": "poopy",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Molestias fuga quo sequi blanditiis doloremque? Necessitatibus similique maiores nesciunt, at est in repellendus, incidunt expedita ducimus reiciendis doloremque odit minus ipsum aut! Perferendis culpa aut recusandae ipsum necessitatibus reprehenderit."
+    },
+    {
+        "title": "Obcaecati debitis explicabo rerum.",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Ipsam, fuga vero quidem inventore asperiores labore nesciunt ipsa dolores quasi iure illum ullam dolorum! Voluptatibus accusamus corrupti dolor quod eveniet voluptatem hic, nemo quisquam perferendis, at labore. Blanditiis, temporibus?"
+    },
+    {
+        "title": "Repellat ut aspernatur minima?",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Vero accusamus mollitia unde perspiciatis dolores eum architecto amet modi sapiente! Assumenda labore veniam facere quos. Explicabo sunt soluta quod molestias. Dolorum facere autem delectus nam suscipit! Ipsa, distinctio illo?"
+    },
+    {
+        "title": "Ad mollitia ratione similique?",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Officiis, aperiam corrupti incidunt, omnis fuga numquam ipsa nesciunt porro laudantium perferendis autem, dicta asperiores. Esse fugiat accusantium quasi nemo vel consequuntur, optio nam quo quae impedit quas perferendis ducimus."
+    },
+    {
+        "title": "Accusamus quas ad porro.",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Cupiditate quae eum aliquam similique dolorem quos incidunt quam nostrum dolorum at enim soluta architecto omnis ullam quod iste, sunt ea. Autem, accusamus veritatis ipsam voluptas tempore dignissimos facere et!"
+    },
+    {
+        "title": "Quo laborum dignissimos qui?",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Illum recusandae nemo alias voluptatem itaque perferendis vitae laboriosam labore assumenda pariatur? Dolore pariatur at, hic enim illum amet non omnis deserunt molestias. Quo quia cupiditate eligendi? Saepe, eaque error!"
+    },
+    {
+        "title": "Exercitationem, blanditiis. Enim, eaque!",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Eius libero ab suscipit, officia, perferendis dolores, porro temporibus cum corporis hic ex pariatur ipsa tempore assumenda accusantium atque qui itaque eaque consequatur nobis deleniti alias. Assumenda atque quae modi!"
+    },
+    {
+        "title": "Aut labore dolor facere!",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Quisquam impedit illum officia eaque vitae eius exercitationem ipsam nisi, sequi mollitia nulla amet quod architecto ad distinctio aliquam debitis eum reiciendis tenetur, corporis laborum cumque magni. Expedita, fuga quisquam."
+    },
+    {
+        "title": "Laborum nihil ipsa quia!",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Soluta deserunt aliquam labore maiores, animi tempora ad voluptatibus porro quam officiis adipisci sapiente vel blanditiis aliquid quibusdam consequatur? Sapiente, nostrum? Eligendi perferendis tempora, cum aut voluptate illo necessitatibus. Modi?"
+    },
+    {
+        "title": "Consequuntur ex esse quod!",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Quasi repudiandae rem voluptas natus porro alias voluptatibus consectetur magnam. Quos consectetur cumque accusantium. Doloremque exercitationem qui placeat architecto odit obcaecati dolor distinctio adipisci. Veritatis mollitia quas tempore unde quibusdam."
+    },
+    {
+        "title": "Inventore facere reprehenderit esse.",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Sequi, perferendis aperiam molestiae neque quae, accusantium unde quasi aliquid ullam hic eius libero ad aliquam maxime possimus sit. Dolore in earum inventore. Dignissimos, facilis aliquid? Recusandae excepturi cupiditate vel?"
+    }
+]
