@@ -81,9 +81,19 @@ button {
 .projects article { 
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: span 3;
-  gap: 1em;
+  grid-row: span 4;
+  gap: 0.5em;
+}
 
+.projects h2, 
+.projects h3, 
+.projects h4, 
+.projects h5, 
+.projects h6 {
+  margin-top: 0;
+  margin-bottom: 0.2em;
+  font-size: 1.2rem;
+  line-height: 1.2; /* tighter line height */
 }
 
 
@@ -93,19 +103,14 @@ button {
   padding: 0;
 }
 
-
 h1 {
   font-size: 400%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
-}
-
-h2 {
-  margin: 0;
-}
+} */
 
 section > header {
   border-bottom: 2px solid #004080;
@@ -219,4 +224,9 @@ li {
 .profile-pic {
   max-width: 300px;
   height: auto;
+}
+
+.project-year {
+  font-size: 0.9rem;
+  color: gray;
 }

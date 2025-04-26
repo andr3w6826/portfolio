@@ -123,19 +123,6 @@ document.querySelector('form')?.addEventListener('submit', e => {
     }
   }
 
-  // export function renderProjects(projects, containerElement) {
-  //   containerElement.innerHTML = '';
-  
-  //   projects.forEach(project => {
-  //     const article = document.createElement('article');
-  //     article.innerHTML = `
-  //       <h3>${project.title}</h3>
-  //       <img src="${project.image}" alt="${project.title}">
-  //       <p>${project.description}</p>
-  //     `;
-  //     containerElement.appendChild(article);
-  //   });
-  // }
   export function renderProjects(projects, containerElement, headingLevel = 'h2') {
     containerElement.innerHTML = '';
 
@@ -143,9 +130,9 @@ document.querySelector('form')?.addEventListener('submit', e => {
       const article = document.createElement('article');
       article.innerHTML = `
         <${headingLevel}>${project.title}</${headingLevel}>
+        <p class="project-year">${project.year}</p>
         <img src="${project.image}" alt="${project.title}">
-        <p>${project.description}</p>
-      `;
+        <p>${project.description}</p>`;
       containerElement.appendChild(article);
     });
   }
