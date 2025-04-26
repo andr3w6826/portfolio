@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  margin: 0
+  margin: 0;
 }
 
 section > header {
@@ -113,7 +113,7 @@ section > header {
   margin-bottom: 0.75em;
 }
 
-li, p {
+li {
   margin-left: 2em;
 }
 
@@ -173,4 +173,50 @@ li, p {
   font-family: inherit;
 }
 
+#profile-stats {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
 
+#profile-stats .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: left;
+  gap: 1rem;
+  max-width: 800px;
+}
+
+#profile-stats dt {
+  font-size: 0.8rem;
+  color: gray;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+#profile-stats dd {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+#profile-stats h2 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* text takes 2x the space compared to the image */
+  gap: 1rem;
+  align-items: start; /* ← this is the fix */
+}
+
+.bio {
+  max-width: 60ch;
+
+}
+
+.profile-pic {
+  max-width: 300px;
+  height: auto;
+}
