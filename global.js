@@ -129,7 +129,11 @@ document.querySelector('form')?.addEventListener('submit', e => {
     projects.forEach(project => {
       const article = document.createElement('article');
       article.innerHTML = `
-        <${headingLevel}>${project.title}</${headingLevel}>
+      <${headingLevel}>
+      <a href="${project.link}" target="_blank" rel="noopener noreferrer">
+        ${project.title}
+      </a>
+    </${headingLevel}>
         <p class="project-year">${project.year}</p>
         <img src="${project.image}" alt="${project.title}">
         <p>${project.description}</p>`;

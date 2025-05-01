@@ -3,8 +3,10 @@
         "title": "Power Outage Predictor",
         "year": 2025,
         "image": "/portfolio/images/po-analysis.jpeg",
-        "description": "A machine learning model that predicts large-scale power outages using historical U.S. data. \n                Built with Random Forest and includes data on weather, land use, and energy consumption."
+        "description": "A machine learning model that predicts large-scale power outages using historical U.S. data. \n                Built with Random Forest and includes data on weather, land use, and energy consumption.",
+        "link": "https://andr3w6826.github.io/power-outage-analysis/"
     },
+    
     {
         "title": "Language Models and Text",
         "year": 2024,
@@ -18,6 +20,14 @@
         "description": "Conducted a predictive analysis on loan application data to identify key factors influencing loan approvals using logistic regression and decision trees."
     },
     {
+        "title": "Persuasive or Deceptive Visualization",
+        "year": 2025,
+        "image": "/portfolio/images/project2.jpeg",
+        "description": "This project explores how visual framing can shape narratives using the same dataset. I created two opposing visualizations—one showing racial bias in policing, the other suggesting equal treatment—by adjusting sampling, axis scaling, and emphasis. It taught me how easily visuals can persuade or mislead depending on design choices.",
+        "link": "https://andr3w6826.github.io/dsc106-project2/"
+    },
+
+    {
         "title": "MTS Transit Data Analysis",
         "year": 2023,
         "image": "/portfolio/images/mts.jpeg",
@@ -29,12 +39,7 @@
         "image": "/portfolio/images/hero.jpeg",
         "description": "Designed a Random Forest model to predict whether a superhero movie sequels based on superhero characteristics. The model achieved an accuracy of 85% on the test set."
     },
-    {
-        "title": "Coming soon!",
-        "year": 2022,
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Cupiditate quae eum aliquam similique dolorem quos incidunt quam nostrum dolorum at enim soluta architecto omnis ullam quod iste, sunt ea. Autem, accusamus veritatis ipsam voluptas tempore dignissimos facere et!"
-    },
+   
     {
         "title": "Coming soon!",
         "year": 2021,
