@@ -13,8 +13,9 @@ body {
          and use the OS’s UI font as the website font
        */
     font: 100%/1.5 system-ui;
-    max-width: 90ch;
-    margin-inline: max(1em, (100% - 100ch) / 2);
+    max-width: 140ch;
+    /* margin-inline: max(1em, (100% - 100ch) / 2); */
+    margin-inline: max(1em, (100% - 120ch) / 2);
     padding: 10px;
     accent-color: var(--color-accent);
     background: canvas;     /* white in light, dark gray in dark */
@@ -229,4 +230,82 @@ li {
 .project-year {
   font-size: 0.9rem;
   color: gray;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;  
+  gap: 5rem;  
+  margin-bottom: 4rem;
+
+}
+
+#projects-pie-plot {
+  flex: 1;
+  width: 100%;
+  height: auto;         
+  max-width: 20em;   
+  min-width: 15em; 
+}
+
+
+.legend {
+  flex: 1;
+  display: grid;
+  /* force exactly 3 columns, extra items will wrap to the next row */
+  grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+  gap: 0.25rem 1rem;      
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  background: white;
+  min-width: 0;     
+}
+
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+
+.legend .swatch {
+  width: 1em;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 0.25em;
+  display: inline-block;
+}
+
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+
+.searchBar {
+  display: block;          
+  margin: 1.5rem auto;      
+  width: 80%;          
+  max-width: 400px;     
+  padding: 0.75em 1em;      
+  font-size: 1.25rem;    
+  border: 1px solid #ccc;
+  border-radius: 0.375em;
+  box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.05);
 }

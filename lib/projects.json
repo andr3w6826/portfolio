@@ -9,13 +9,13 @@
     
     {
         "title": "Language Models and Text",
-        "year": 2024,
+        "year": 2025,
         "image": "/portfolio/images/llm.jpeg",
         "description": "Built and fine-tuned a basic large language model to generate text completions based on user input, experimenting with tokenization and word embeddings."
     },
     {
         "title": "Loan Application Analysis",
-        "year": 2024,
+        "year": 2025,
         "image": "/portfolio/images/loans.jpeg",
         "description": "Conducted a predictive analysis on loan application data to identify key factors influencing loan approvals using logistic regression and decision trees."
     },
@@ -29,7 +29,7 @@
 
     {
         "title": "MTS Transit Data Analysis",
-        "year": 2023,
+        "year": 2024,
         "image": "/portfolio/images/mts.jpeg",
         "description": "Analyzed San Diego MTS public transit data to uncover ridership patterns, delays, and system usage trends through data cleaning, visualization, and mapping."
     },
@@ -42,36 +42,37 @@
    
     {
         "title": "Coming soon!",
-        "year": 2021,
+        "year": 2023,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Illum recusandae nemo alias voluptatem itaque perferendis vitae laboriosam labore assumenda pariatur? Dolore pariatur at, hic enim illum amet non omnis deserunt molestias. Quo quia cupiditate eligendi? Saepe, eaque error!"
     },
     {
         "title": "Coming soon!",
-        "year": 2020,
+        "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Eius libero ab suscipit, officia, perferendis dolores, porro temporibus cum corporis hic ex pariatur ipsa tempore assumenda accusantium atque qui itaque eaque consequatur nobis deleniti alias. Assumenda atque quae modi!"
     },
     {
         "title": "Coming soon!",
-        "year": 2019,
+        "year": 2000,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Quisquam impedit illum officia eaque vitae eius exercitationem ipsam nisi, sequi mollitia nulla amet quod architecto ad distinctio aliquam debitis eum reiciendis tenetur, corporis laborum cumque magni. Expedita, fuga quisquam."
     },
     {
         "title": "Coming soon!",
+        "year": 2000,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Soluta deserunt aliquam labore maiores, animi tempora ad voluptatibus porro quam officiis adipisci sapiente vel blanditiis aliquid quibusdam consequatur? Sapiente, nostrum? Eligendi perferendis tempora, cum aut voluptate illo necessitatibus. Modi?"
     },
     {
         "title": "Coming soon!",
-        "year": 2018,
+        "year": 2000,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Quasi repudiandae rem voluptas natus porro alias voluptatibus consectetur magnam. Quos consectetur cumque accusantium. Doloremque exercitationem qui placeat architecto odit obcaecati dolor distinctio adipisci. Veritatis mollitia quas tempore unde quibusdam."
     },
     {
         "title": "Coming soon!",
-        "year": 2017,
+        "year": 2000,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Sequi, perferendis aperiam molestiae neque quae, accusantium unde quasi aliquid ullam hic eius libero ad aliquam maxime possimus sit. Dolore in earum inventore. Dignissimos, facilis aliquid? Recusandae excepturi cupiditate vel?"
     }

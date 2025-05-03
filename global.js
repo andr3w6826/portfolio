@@ -125,21 +125,36 @@ document.querySelector('form')?.addEventListener('submit', e => {
 
   export function renderProjects(projects, containerElement, headingLevel = 'h2') {
     containerElement.innerHTML = '';
-
+  
     projects.forEach(project => {
       const article = document.createElement('article');
+      // article.innerHTML = `
+      //   <${headingLevel}>
+      //     <a href="${project.link}" target="_blank" rel="noopener noreferrer">
+      //       ${project.title}
+      //     </a>
+      //   </${headingLevel}>
+      //   <img src="${project.image}" alt="${project.title}">
+      //   <p>${project.description}</p>
+      //   <p class="project-year"><em>c. ${project.year}</em></p>
+      // `;
       article.innerHTML = `
-      <${headingLevel}>
-      <a href="${project.link}" target="_blank" rel="noopener noreferrer">
-        ${project.title}
-      </a>
-    </${headingLevel}>
-        <p class="project-year">${project.year}</p>
-        <img src="${project.image}" alt="${project.title}">
-        <p>${project.description}</p>`;
+  <${headingLevel}>
+    <a href="${project.link}" target="_blank" rel="noopener noreferrer">
+      ${project.title}
+    </a>
+  </${headingLevel}>
+  <img src="${project.image}" alt="${project.title}">
+  <div class="project-text">
+    <p>${project.description}</p>
+    <p class="project-year"><em>c. ${project.year}</em></p>
+  </div>
+`;
+
       containerElement.appendChild(article);
     });
   }
+  
   
 
   export async function fetchGitHubData(username) {
