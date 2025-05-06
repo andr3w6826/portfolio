@@ -1,23 +1,36 @@
-- name: Checkout
-  uses: actions/checkout@v4
-  with:
-    fetch-depth: '0'
+name: Update Code Stats
 
-- name: Run Elocuent
-  run: |
-    npx elocuent -d . -o meta/loc.csv
+# → when this workflow should run
+on:
+  push:
+    branches:
+      - main    # or whatever branch you publish from
 
-- name: Commit and Push
-  run: |
-    git config --local user.email "action@github.com"
-    git config --local user.name "GitHub Action"
-    mkdir -p meta
-    git pull
-    git add -f meta/loc.csv
-    git commit -m "Update code statistics" || echo "No changes to commit"
-    git push
-
+# → give the runner permission to push back your CSV
 permissions:
   contents: write
   pages: write
   id-token: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Elocuent
+        run: npx elocuent -d . -o meta/loc.csv
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          mkdir -p meta
+          git pull
+          git add -f meta/loc.csv
+          git commit -m "Update code statistics" || echo "No changes to commit"
+          git push
