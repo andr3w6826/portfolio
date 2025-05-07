@@ -34,9 +34,10 @@ async function loadData() {
         };
   
         Object.defineProperty(ret, 'lines', {
-          value: lines,
-          // What other options do we need to set?
-          // Hint: look up configurable, writable, and enumerable
+            value: lines,
+            writable: false, 
+            enumerable: false,  
+            configurable: false, 
         });
   
         return ret;
@@ -49,17 +50,26 @@ async function loadData() {
     // Add total commits
     dl.append('dt').text('Total commits');
     dl.append('dd').text(commits.length);
-    
+
+    dl.append('dt').text('Files');
+    dl.append('dd').text(d3.group(data, d => d.file).size);
     // Add total LOC
     dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
     dl.append('dd').text(data.length);
+
+    const files = d3.groups(data, d => d.file); 
+    const avgFileLength = d3.mean(files, ([file, rows]) => rows.length);
+    dl.append('dt').text('Average file length (lines)');
+    dl.append('dd').text(avgFileLength.toFixed(1));
   
+    dl.append('dt').text('Longest Line');
+    dl.append('dd').text(d3.max(data, d => d.length));
     
-  
-    // Add more stats as needed...
+
+ 
   }
 
   let data = await loadData();
   let commits = processCommits(data);
-  console.log(commits);
+  console.log(data);
   renderCommitInfo(data, commits);
