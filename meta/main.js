@@ -84,17 +84,14 @@ async function loadData() {
 
     dl.append("dt").text("Busiest time of day");
     dl.append("dd").text(busiest[0]);
-    
-    const uniqueDays = new Set(
-        data.map(d => d.datetime.toISOString().slice(0,10))
-    );
-    
 
-    const daysWorked = uniqueDays.size;
-
-    dl.append('dt').text('Days worked');
-    dl.append('dd').text(daysWorked);
-    
+    const byDate = d3.groups(
+        data,
+        d => d.datetime.toISOString().slice(0,10)
+      );
+      const daysWorked = byDate.length;
+      dl.append('dt').text('Days worked');
+      dl.append('dd').text(daysWorked);
 
   }
 
