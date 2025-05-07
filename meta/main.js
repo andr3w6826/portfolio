@@ -65,8 +65,28 @@ async function loadData() {
     dl.append('dt').text('Longest Line');
     dl.append('dd').text(d3.max(data, d => d.length));
     
+    // 1. A helper to map an hour → time‑of‑day label
+    function timeOfDayLabel(hour) {
+        if (hour >= 6  && hour < 12) return "Morning";
+        if (hour >= 12 && hour < 17) return "Afternoon";
+        if (hour >= 17 && hour < 21) return "Evening";
+        return "Night";
+    }
+    
+    const byBucket = d3.rollup(
+        data,
+        rows => rows.length,
+        d   => timeOfDayLabel(d.datetime.getHours())
+    );
+    
+    let busiest = Array.from(byBucket.entries())
+                        .reduce((best, curr) => curr[1] > best[1] ? curr : best);
 
- 
+    dl.append("dt").text("Busiest time of day");
+    dl.append("dd").text(busiest[0]);
+    
+
+
   }
 
   let data = await loadData();
