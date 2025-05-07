@@ -309,3 +309,38 @@ path {
   border-radius: 0.375em;
   box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.05);
 }
+
+
+/* Make the whole stats block a grid of columns */
+.stats {
+  display: grid;
+  /* Flow items down each column (so dt goes row 1 col N, dd row 2 col N) */
+  grid-auto-flow: column;
+  /* Each column should be at least 120px wide, but share leftover space */
+  grid-auto-columns: minmax(120px, 1fr);
+  /* Exactly two rows: one for titles (dt), one for values (dd) */
+  grid-template-rows: auto auto;
+  /* Spacing between cards */
+  margin: 2rem 0;
+}
+
+/* Style the title (dt) in each card */
+.stats dt {
+  grid-row: 1;               /* force it into the first row */
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* Style the value (dd) in each card */
+.stats dd {
+  grid-row: 2;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;                
+  padding: 0.75rem 0;
+  font-weight: bold;
+}
+
