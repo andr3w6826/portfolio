@@ -1,5 +1,5 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
-
+let xScale, yScale;
 
 async function loadData() {
     const data = await d3.csv('loc.csv', (row) => ({
@@ -120,14 +120,15 @@ async function loadData() {
     .attr('viewBox', `0 0 ${width} ${height}`)
     .style('overflow', 'visible');
 
-    const xScale = d3
+    xScale = d3
     .scaleTime()
     .domain(d3.extent(commits, (d) => d.datetime))
     .range([0, width])
     .nice();
 
     // axis scales
-    const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+    yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+
     xScale.range([usableArea.left, usableArea.right]);
     yScale.range([usableArea.bottom, usableArea.top]);
     
@@ -179,7 +180,18 @@ async function loadData() {
       .on('mouseleave', (event) => {
         d3.select(event.currentTarget).style('fill-opacity', 0.7);
         updateTooltipVisibility(false);
-      });
+    });
+    svg.call(
+        d3.brush()
+          .extent([
+            [usableArea.left, usableArea.top],
+            [usableArea.right, usableArea.bottom]
+          ])
+          .on('start brush end', brushed)   // ← wire up our handler
+      );
+      
+      // 5.2: raise dots & brush handles above overlay so tooltips work
+      svg.selectAll('.dots, .overlay ~ *').raise();
     
   }
     function renderTooltipContent(commit) {
@@ -206,14 +218,83 @@ async function loadData() {
         const tooltip = document.getElementById('commit-tooltip');
         tooltip.style.left = `${event.clientX}px`;
         tooltip.style.top = `${event.clientY}px`;
+    }
+ 
+    function brushed(event) {
+        const selection = event.selection;
+    
+        d3.selectAll('circle')
+          .classed('selected', d => isCommitSelected(selection, d));
+      
+        renderSelectionCount(selection);
+      
+        renderLanguageBreakdown(selection);
       }
 
-      function createBrushSelector(svg) {
-        svg.call(d3.brush());
+    function renderSelectionCount(selection) {
+        const selectedCommits = selection
+          ? commits.filter(d => isCommitSelected(selection, d))
+          : [];
+      
+        const countEl = document.querySelector('#selection-count');
+        const n = selectedCommits.length;
+        countEl.textContent = n
+          ? `${n} commit${n > 1 ? 's' : ''} selected`
+          : 'No commits selected';
+      
+        return selectedCommits;
       }
+      
+      // Step 5.6 → build a language‐by‐line‐count breakdown in the <dl>
+      function renderLanguageBreakdown(selection) {
+        // pick filtered commits (or all if none selected)
+        const chosen = (selection && renderSelectionCount(selection).length)
+          ? renderSelectionCount(selection)
+          : commits;
+      
+        // flatten to an array of all line‐records in those commits
+        const lines = chosen.flatMap(d => d.lines);
+      
+        // count lines per language/type
+        const breakdown = d3.rollup(
+          lines,
+          v => v.length,
+          d => d.type
+        );
+      
+        // find container
+        const dl = document.getElementById('language-breakdown');
+        dl.innerHTML = '';  // clear old
+      
+        // if nothing to show, bail
+        if (breakdown.size === 0) return;
+      
+        // total lines for formatting
+        const total = lines.length;
+        const fmt = d3.format('.1%');
+      
+        // append each language
+        for (const [lang, count] of breakdown) {
+          const pct = fmt(count / total);
+          dl.innerHTML += `
+            <dt>${lang}</dt>
+            <dd>${count} lines (${pct})</dd>
+          `;
+        }
+    }
+      
 
-  let data = await loadData();
-  let commits = processCommits(data);
-  renderCommitInfo(data, commits);
+      
+    // 5.4.b: true if a commit’s (x,y) lies inside the brush bounds
+    function isCommitSelected(selection, commit) {
+        if (!selection) return false;
+        const [[x0, y0], [x1, y1]] = selection;
+        const x = xScale(commit.datetime);
+        const y = yScale(commit.hourFrac);
+        return x0 <= x && x <= x1 && y0 <= y && y <= y1;
+      }
+    let data = await loadData();
+    let commits = processCommits(data);
+    renderCommitInfo(data, commits);
 
-  renderScatterPlot(data, commits);
+    renderScatterPlot(data, commits);
