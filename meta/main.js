@@ -33,16 +33,25 @@ async function loadData() {
           totalLines: lines.length,
         };
   
-        Object.defineProperty(ret, 'lines', {
-            value: lines,
+        Object.defineProperty(ret, 'lines', { 
+            value: lines, 
             writable: false, 
-            enumerable: false,  
+            enumerable: false, 
             configurable: false, 
         });
   
         return ret;
       });
   }
+
+  // top of main.js
+    function timeOfDayLabel(hour) {
+        if (hour >= 6  && hour < 12) return "Morning";
+        if (hour >= 12 && hour < 17) return "Afternoon";
+        if (hour >= 17 && hour < 21) return "Evening";
+        return "Night";
+    }
+  
   function renderCommitInfo(data, commits) {
     // Create the dl element
     const dl = d3.select('#stats').append('dl').attr('class', 'stats');
@@ -64,14 +73,6 @@ async function loadData() {
   
     dl.append('dt').text('Longest Line');
     dl.append('dd').text(d3.max(data, d => d.length));
-    
-    // 1. A helper to map an hour → time‑of‑day label
-    function timeOfDayLabel(hour) {
-        if (hour >= 6  && hour < 12) return "Morning";
-        if (hour >= 12 && hour < 17) return "Afternoon";
-        if (hour >= 17 && hour < 21) return "Evening";
-        return "Night";
-    }
     
     const byBucket = d3.rollup(
         data,
@@ -120,12 +121,29 @@ async function loadData() {
     .domain(d3.extent(commits, (d) => d.datetime))
     .range([0, width])
     .nice();
+
+    // axis scales
     const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
     xScale.range([usableArea.left, usableArea.right]);
     yScale.range([usableArea.bottom, usableArea.top]);
+    
+
+    // gridlines
+    const gridlines = svg
+    .append('g')
+    .attr('class', 'gridlines')
+    .attr('transform', `translate(${usableArea.left}, 0)`);
+
+
+    gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+
+    // y and x axis
     const xAxis = d3.axisBottom(xScale);
-    const yAxis = d3.axisLeft(yScale);
-        svg
+    const yAxis = d3
+    .axisLeft(yScale)
+    .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
+
+    svg
     .append('g')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
     .call(xAxis);
@@ -144,11 +162,43 @@ async function loadData() {
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
     .attr('r', 5)
-    .attr('fill', 'steelblue');
-
-
-
+    .attr('class', d => timeOfDayLabel(d.datetime.getHours()))
+    .on('mouseenter', (event, commit) => {
+        renderTooltipContent(commit);
+        updateTooltipVisibility(true);
+        updateTooltipPosition(event);
+      })
+      .on('mouseleave', () => {
+        updateTooltipVisibility(false);
+      });
+    
+  }
+    function renderTooltipContent(commit) {
+        if (!commit || !commit.id) return;
+      
+        document.getElementById('commit-link').href        = commit.url;
+        document.getElementById('commit-link').textContent = commit.id;
+      
+        document.getElementById('commit-date').textContent   =
+          commit.datetime.toLocaleDateString(undefined, { dateStyle: 'full' });
+      
+        document.getElementById('commit-time').textContent   =
+          commit.datetime.toLocaleTimeString(undefined, { timeStyle: 'short' });
+      
+        document.getElementById('commit-author').textContent = commit.author;
+        document.getElementById('commit-lines').textContent  = commit.totalLines;
+      }
+      
+    function updateTooltipVisibility(isVisible) {
+        const tooltip = document.getElementById('commit-tooltip');
+        tooltip.hidden = !isVisible;
     }
+    function updateTooltipPosition(event) {
+        const tooltip = document.getElementById('commit-tooltip');
+        tooltip.style.left = `${event.clientX}px`;
+        tooltip.style.top = `${event.clientY}px`;
+      }
+
   let data = await loadData();
   let commits = processCommits(data);
   renderCommitInfo(data, commits);

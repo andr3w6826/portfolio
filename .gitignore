@@ -1,5 +1,2 @@
-# don’t commit our generated CSV
-meta/loc.csv
-
 # don’t commit all your node packages
 node_modules/
