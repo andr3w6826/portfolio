@@ -20,6 +20,13 @@
         "description": "Conducted a predictive analysis on loan application data to identify key factors influencing loan approvals using logistic regression and decision trees."
     },
     {
+        "title": "Interactive Boston Bike Network",
+        "year": 2025,
+        "image": "/portfolio/images/bikes.jpeg",
+        "description": "An interactive Mapbox GL JS and D3 map of Boston’s BlueBike system showing bike lanes, station-level trip volumes and arrival–departure balances as sized and colored circles, with time-filterable flow lines between stations.",
+        "link": "https://andr3w6826.github.io/bluebike-mapbox/"
+    },
+    {
         "title": "Persuasive or Deceptive Visualization",
         "year": 2025,
         "image": "/portfolio/images/project2.jpeg",
@@ -38,14 +45,6 @@
         "year": 2023,
         "image": "/portfolio/images/hero.jpeg",
         "description": "Designed a Random Forest model to predict whether a superhero movie sequels based on superhero characteristics. The model achieved an accuracy of 85% on the test set."
-    },
-   
-    {
-        "title": "Coming soon!",
-        "year": 2023,
-        "image": "/portfolio/images/bikes.jpeg",
-        "description": "An interactive Mapbox GL JS and D3 map of Boston’s BlueBike system showing bike lanes, station-level trip volumes and arrival–departure balances as sized and colored circles, with time-filterable flow lines between stations.",
-        "link": "https://andr3w6826.github.io/bluebike-mapbox/"
     },
     {
         "title": "Coming soon!",
