@@ -43,8 +43,9 @@
     {
         "title": "Coming soon!",
         "year": 2023,
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Illum recusandae nemo alias voluptatem itaque perferendis vitae laboriosam labore assumenda pariatur? Dolore pariatur at, hic enim illum amet non omnis deserunt molestias. Quo quia cupiditate eligendi? Saepe, eaque error!"
+        "image": "/portfolio/images/bikes.jpeg",
+        "description": "An interactive Mapbox GL JS and D3 map of Boston’s BlueBike system showing bike lanes, station-level trip volumes and arrival–departure balances as sized and colored circles, with time-filterable flow lines between stations.",
+        "link": "https://andr3w6826.github.io/bluebike-mapbox/"
     },
     {
         "title": "Coming soon!",
