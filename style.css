@@ -360,6 +360,10 @@ circle.Evening   { fill: #FF5500; /* deep orange  */ }
 circle.Night     { fill: #6699FF; /* gentle blue  */ }
 
 circle {
+  @starting-style {
+    r: 0;
+  };
+  
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
@@ -369,32 +373,6 @@ circle:hover {
   transform: scale(1.5);
 }
 
-/* dl.info {
-  display: grid;
-  grid-template-columns: max-content auto;
-  gap: 0.5rem 1rem;
-  margin: 0;
-}
-
-.tooltip {
-  position: fixed;
-  top: 1em;
-  left: 1em;
-}
-
-
-#commit-tooltip {
-  position: absolute; 
-  display: none;         
-  pointer-events: none; 
-  background: white;
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  font-size: 0.9rem;
-  z-index: 10;
-} */
 
 /* --- Step 3.2: “tooltip look” --- */
 .tooltip {
