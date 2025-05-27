@@ -12,6 +12,20 @@
     <h1>Meta</h1>
     <h2>This page includes stats about the code of this website</h2>
 
+
+
+    <div id="filter-ui" style="flex: 1; align-items: baseline; gap: 0.5rem;">
+      <label for="commit-progress">Show commits up to:</label>
+      <input
+        type="range"
+        id="commit-progress"
+        min="0"
+        max="100"
+        value="100"
+      />
+      <time id="commit-time" style="margin-left: auto;">Loading…</time>
+    </div>
+
     <h2>Summary</h2>
     <div id="stats"></div>
     

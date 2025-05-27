@@ -295,6 +295,45 @@ async function loadData() {
       }
     let data = await loadData();
     let commits = processCommits(data);
-    renderCommitInfo(data, commits);
 
+
+      // lab 8
+    let commitProgress = 100;
+    let timeScale = d3
+      .scaleTime()
+      .domain([
+        d3.min(commits, (d) => d.datetime),
+        d3.max(commits, (d) => d.datetime),
+      ])
+      .range([0, 100]);
+    let commitMaxTime = timeScale.invert(commitProgress);
+
+  function onTimeSliderChange() {
+
+    commitProgress = +d3.select('#commit-progress').property('value');
+
+    commitMaxTime   = timeScale.invert(commitProgress);
+
+    d3.select('#commit-time')
+      .text(
+        commitMaxTime.toLocaleString(undefined, {
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        })
+      );
+  }
+
+  // 2) wire it up
+  d3.select('#commit-progress')
+    .on('input', onTimeSliderChange);
+
+  // 3) initialize on load
+  onTimeSliderChange();
+
+
+
+    // idk man
+    renderCommitInfo(data, commits);
     renderScatterPlot(data, commits);
+
+
