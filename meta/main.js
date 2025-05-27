@@ -379,6 +379,11 @@ async function loadData() {
       );
     filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
 
+    // keep stats updating
+    const filteredRows = filteredCommits.flatMap(d => d.lines);
+    d3.select('#stats').html('');
+    renderCommitInfo(filteredRows, filteredCommits);
+
     // wha
     let lines = filteredCommits.flatMap((d) => d.lines);
     let files = d3
