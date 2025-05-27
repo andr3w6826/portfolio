@@ -337,12 +337,6 @@ async function loadData() {
   
     const xAxis = d3.axisBottom(xScale);
   
-    // CHANGE: we should clear out the existing xAxis and then create a new one.
-    // svg
-    //   .append('g')
-    //   .attr('transform', `translate(0, ${usableArea.bottom})`)
-    //   .call(xAxis);
-  
     const dots = svg.select('g.dots');
   
     const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
@@ -384,6 +378,33 @@ async function loadData() {
         })
       );
     filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+
+    // wha
+    let lines = filteredCommits.flatMap((d) => d.lines);
+    let files = d3
+      .groups(lines, (d) => d.file)
+      .map(([name, lines]) => {
+        return { name, lines };
+    });
+
+    // ??
+    let filesContainer = d3
+    .select('#files')
+    .selectAll('div')
+    .data(files, (d) => d.name)
+    .join(
+      // This code only runs when the div is initially rendered
+      (enter) =>
+        enter.append('div').call((div) => {
+          div.append('dt').append('code');
+          div.append('dd');
+        }),
+    );
+
+    // This code updates the div info
+    filesContainer.select('dt > code').text((d) => d.name);
+    filesContainer.select('dd').text((d) => `${d.lines.length} lines`);
+
     updateScatterPlot(data, filteredCommits);
 
   }
