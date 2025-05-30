@@ -469,20 +469,20 @@ circle.selected {
 
 
 h2.section-title {
-  color: black;               /* keep the text black */
-  border-bottom: 2px solid #ccc;  /* 2px gray line underneath */
-  padding-bottom: 0.5rem;     /* space between text and line */
-  margin-bottom: 1.5rem;      /* space below the line */
+  color: black;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5rem; 
+  margin-bottom: 1.5rem; 
 }
 
 #filter-ui {
   display: flex;
   align-items: baseline;
-  gap: 1rem;        /* more space between “Show commits up to:” and the slider */
-  margin-bottom: 1rem; /* optional, to separate it from what comes next */
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 #filter-ui input[type="range"] {
-  flex: 1;          /* let the slider fill all available space */
-  max-width: none;  /* allow it to grow past its default sizing */
+  flex: 1; 
+  max-width: none;
 }
