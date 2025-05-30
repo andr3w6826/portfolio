@@ -420,8 +420,6 @@ async function loadData() {
 
   }
 
-  d3.select('#commit-progress').on('input', onTimeSliderChange);
-  onTimeSliderChange();
 
   d3.select('#scatter-story')
   .selectAll('.step')
@@ -448,33 +446,62 @@ async function loadData() {
 	`,
   );
 
+  d3.select('#commit-progress').on('input', onTimeSliderChange);
+  onTimeSliderChange();
+
   function onStepEnter(response) {
     console.log(response.element.__data__.datetime);
   }
-  
-  const scroller = scrollama();
-  // scroller
-  //   .setup({
-  //     container: '#scrolly-1',
-  //     step: '#scrolly-1 .step',
-  //   })
-  //   .onStepEnter(onStepEnter);
 
+const scroller = scrollama();
 scroller
   .setup({
-    container:  '#scrolly-1',           // the outer grid
-    graphic:    '#scatter-plot',        // the chart panel
-    step:       '#scatter-story .step', // each step to watch
-    offset:     0.6,                    // trigger when step hits 60% down
-    // debug:   true,                   // uncomment to see markers
+    container: '#scrolly-1',
+    graphic:   '#scatter-plot',
+    step:      '#scatter-story .step',
+    offset:    0.6,
   })
-  .onStepEnter(({ index }) => {
-    // index 0 → first step, 1 → second, etc.
-    // pick a slider value (or any other filter) per step:
-    const stepValues = [100, 75, 50, 25]; 
-    const newVal = stepValues[index] ?? 100;
-
-    // move the slider and redraw
+  // .onStepEnter(({ index }) => {
+  //   console.log('enter step', index);
+  // })
+  .onStepProgress(({ index, progress }) => {
+    const total = document.querySelectorAll('#scatter-story .step').length;
+    const global = (index + progress) / (total - 1);
+    const newVal = Math.round((1 - global) * 100);
     d3.select('#commit-progress').property('value', newVal);
     onTimeSliderChange();
   });
+
+
+const scrolly = document.getElementById('scrolly-1');
+
+function getStoryHeight() {
+  const { height } = document
+    .getElementById('scatter-story')
+    .getBoundingClientRect();
+  return height;
+}
+
+
+function onWindowScroll() {
+  const storyTop    = scrolly.getBoundingClientRect().top;
+  const storyHeight = getStoryHeight();
+  const viewportH   = window.innerHeight;
+  const enterY = viewportH * 0.4;
+  const exitY  = -storyHeight + viewportH * 0.6;
+  const localProgress = 
+    (enterY - storyTop) / (enterY - exitY);
+
+  const p = Math.max(0, Math.min(1, localProgress));
+
+  const newVal = Math.round((1 - p) * 100);
+
+  const slider = d3.select('#commit-progress');
+  if (+slider.property('value') !== newVal) {
+    slider.property('value', newVal);
+    onTimeSliderChange();
+  }
+}
+
+window.addEventListener('scroll', onWindowScroll);
+window.addEventListener('resize', onWindowScroll);

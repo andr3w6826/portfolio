@@ -468,6 +468,14 @@ circle.selected {
 }
 
 
+#scatter-plot {
+  position: sticky;
+  top: 1rem;          /* or however far from the top you want */
+  align-self: start;  /* so it doesn’t stretch vertically */
+  /* give it a height so it actually stays visible: */
+  height: 500px;      
+}
+
 h2.section-title {
   color: black;
   border-bottom: 2px solid #ccc;
