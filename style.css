@@ -423,18 +423,40 @@ circle.selected {
 #files {
   display: grid;
   grid-template-columns: 1fr 4fr;
+  gap: 0.5em 1em;
+}
 
-  > div {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: subgrid;
-  }
+#files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
 
-  dt {
-    grid-column: 1;
-  }
+#files dt {
+  grid-column: 1;
+  margin: 0;
+}
 
-  dd {
-    grid-column: 2;
-  }
+#files dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin: 0;
+}
+
+#files div.line {
+  width: 0.5em;
+  aspect-ratio: 1 / 1;
+  background: steelblue;
+  border-radius: 50%;
+}
+
+#files .line {
+  width: 0.5em;
+  height: 0.5em;
+  flex: 0 0 auto;
+  background: steelblue;
+  border-radius: 50%;
 }

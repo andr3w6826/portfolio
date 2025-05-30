@@ -249,35 +249,30 @@ async function loadData() {
         return selectedCommits;
       }
       
-      // Step 5.6 → build a language‐by‐line‐count breakdown in the <dl>
       function renderLanguageBreakdown(selection) {
-        // pick filtered commits (or all if none selected)
+
         const chosen = (selection && renderSelectionCount(selection).length)
           ? renderSelectionCount(selection)
           : commits;
       
-        // flatten to an array of all line‐records in those commits
         const lines = chosen.flatMap(d => d.lines);
       
-        // count lines per language/type
+
         const breakdown = d3.rollup(
           lines,
           v => v.length,
           d => d.type
         );
       
-        // find container
         const dl = document.getElementById('language-breakdown');
-        dl.innerHTML = '';  // clear old
+        dl.innerHTML = '';
       
-        // if nothing to show, bail
+        
         if (breakdown.size === 0) return;
       
-        // total lines for formatting
         const total = lines.length;
         const fmt = d3.format('.1%');
-      
-        // append each language
+    
         for (const [lang, count] of breakdown) {
           const pct = fmt(count / total);
           dl.innerHTML += `
@@ -398,7 +393,7 @@ async function loadData() {
     .selectAll('div')
     .data(files, (d) => d.name)
     .join(
-      // This code only runs when the div is initially rendered
+    
       (enter) =>
         enter.append('div').call((div) => {
           div.append('dt').append('code');
@@ -406,10 +401,15 @@ async function loadData() {
         }),
     );
 
-    // This code updates the div info
     filesContainer.select('dt > code').text((d) => d.name);
-    filesContainer.select('dd').text((d) => `${d.lines.length} lines`);
 
+    filesContainer
+      .select('dd')
+      .selectAll('div.line')
+      .data(d => d.lines)
+      .join('div')
+        .attr('class','line');
+    
     updateScatterPlot(data, filteredCommits);
 
   }
