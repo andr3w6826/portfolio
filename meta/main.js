@@ -1,5 +1,6 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 let xScale, yScale;
+const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 async function loadData() {
     const data = await d3.csv('loc.csv', (row) => ({
@@ -385,7 +386,8 @@ async function loadData() {
       .groups(lines, (d) => d.file)
       .map(([name, lines]) => {
         return { name, lines };
-    });
+    })
+    .sort((a, b) => b.lines.length - a.lines.length);
 
     // ??
     let filesContainer = d3
@@ -397,18 +399,20 @@ async function loadData() {
       (enter) =>
         enter.append('div').call((div) => {
           div.append('dt').append('code');
-          div.append('dd');
+          div.append('dd').attr('class','units'); // ???
         }),
     );
 
     filesContainer.select('dt > code').text((d) => d.name);
+    filesContainer.attr('style', (d) => `--color: ${colors(d.name)}`);
 
     filesContainer
       .select('dd')
       .selectAll('div.line')
       .data(d => d.lines)
       .join('div')
-        .attr('class','line');
+        .attr('class','line')
+      
     
     updateScatterPlot(data, filteredCommits);
 
