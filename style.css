@@ -9,9 +9,6 @@ html {
 }
 
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
     font: 100%/1.5 system-ui;
     max-width: 140ch;
     /* margin-inline: max(1em, (100% - 100ch) / 2); */
@@ -311,22 +308,20 @@ path {
 }
 
 
-/* Make the whole stats block a grid of columns */
 .stats {
+  background-color: #f5f5f5;  /* very light gray */
+  border-radius: 0.5rem;      /* adjust for more/less rounding */
+  padding: 1rem; 
   display: grid;
-  /* Flow items down each column (so dt goes row 1 col N, dd row 2 col N) */
   grid-auto-flow: column;
-  /* Each column should be at least 120px wide, but share leftover space */
   grid-auto-columns: minmax(120px, 1fr);
-  /* Exactly two rows: one for titles (dt), one for values (dd) */
   grid-template-rows: auto auto;
-  /* Spacing between cards */
   margin: 2rem 0;
 }
 
-/* Style the title (dt) in each card */
+
 .stats dt {
-  grid-row: 1;               /* force it into the first row */
+  grid-row: 1; 
   text-align: center;
   text-transform: uppercase;
   font-size: 0.875rem;
@@ -461,23 +456,33 @@ circle.selected {
 }
 
 #scrolly-1 {
-  position: relative;
-  display: flex;
-  gap: 1rem;
-
-  > * {
-    flex: 1;
-  }
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 1rem 3rem;
+  align-items: start;
 }
+
 
 #scatter-story {
   position: relative;
 }
 
-#scatter-plot {
-  position: sticky;
-  top: 0;
-  left: 0;
-  bottom: auto;
-  height: 50vh;
+
+h2.section-title {
+  color: black;               /* keep the text black */
+  border-bottom: 2px solid #ccc;  /* 2px gray line underneath */
+  padding-bottom: 0.5rem;     /* space between text and line */
+  margin-bottom: 1.5rem;      /* space below the line */
+}
+
+#filter-ui {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;        /* more space between “Show commits up to:” and the slider */
+  margin-bottom: 1rem; /* optional, to separate it from what comes next */
+}
+
+#filter-ui input[type="range"] {
+  flex: 1;          /* let the slider fill all available space */
+  max-width: none;  /* allow it to grow past its default sizing */
 }

@@ -9,15 +9,15 @@
     <script src = "main.js" type = 'module'></script>
 </head>
 <body>
-    <h1>Meta</h1>
-    <h2>This page includes stats about the code of this website</h2>
+    <h1 style="text-align: center;">Meta</h1>
+    <h4 style="font-weight: normal;">This page includes stats about the code of this website</h4>
 
     <div id="stats"></div>
 
-    <h2>Commits by time of day</h2>
+    <h2 class = 'section-title'>Commits by time of day</h2>
 
-    <div id="filter-ui" style="flex: 1; align-items: baseline; gap: 0.5rem;">
-      <label for="commit-progress">Show commits up to:</label>
+    <div id="filter-ui">
+      <label for="commit-progress">Show commits until:</label>
       <input
         type="range"
         id="commit-progress"

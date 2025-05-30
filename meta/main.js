@@ -344,7 +344,8 @@ async function loadData() {
       .attr('cx', (d) => xScale(d.datetime))
       .attr('cy', (d) => yScale(d.hourFrac))
       .attr('r', (d) => rScale(d.totalLines))
-      .attr('fill', 'steelblue')
+      // .attr('fill', 'steelblue')
+      .attr('class', d => timeOfDayLabel(d.datetime.getHours()))
       .style('fill-opacity', 0.7) // Add transparency for overlapping dots
       .on('mouseenter', (event, commit) => {
         d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
