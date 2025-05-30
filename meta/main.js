@@ -1,6 +1,7 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 let xScale, yScale;
+
 const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 async function loadData() {
@@ -452,9 +453,28 @@ async function loadData() {
   }
   
   const scroller = scrollama();
-  scroller
-    .setup({
-      container: '#scrolly-1',
-      step: '#scrolly-1 .step',
-    })
-    .onStepEnter(onStepEnter);
+  // scroller
+  //   .setup({
+  //     container: '#scrolly-1',
+  //     step: '#scrolly-1 .step',
+  //   })
+  //   .onStepEnter(onStepEnter);
+
+scroller
+  .setup({
+    container:  '#scrolly-1',           // the outer grid
+    graphic:    '#scatter-plot',        // the chart panel
+    step:       '#scatter-story .step', // each step to watch
+    offset:     0.6,                    // trigger when step hits 60% down
+    // debug:   true,                   // uncomment to see markers
+  })
+  .onStepEnter(({ index }) => {
+    // index 0 → first step, 1 → second, etc.
+    // pick a slider value (or any other filter) per step:
+    const stepValues = [100, 75, 50, 25]; 
+    const newVal = stepValues[index] ?? 100;
+
+    // move the slider and redraw
+    d3.select('#commit-progress').property('value', newVal);
+    onTimeSliderChange();
+  });
